@@ -1,6 +1,6 @@
 # jsinspect
 
-## Note this is a fork of jsinspect which uses Babel 7's parser, upgrading from babylon to the new babel/parser. Now supports ES2020 standard.
+## Note this is a fork of jsinspect that now supports ES2020 standard, TS and TSX files. It uses Babel 7's parser, upgrading from babylon to the new babel/parser. Support for Flow has been removed in favour of TS.
 
 Detect copy-pasted and structurally similar JavaScript code. Requires Node.js
 6.0+, and supports ES6, JSX as well as Flow. Note: the project has been mostly
@@ -22,7 +22,7 @@ use-case for a helpful CLI tool.
 
 Existing solutions do exist for this purpose, but some struggle with code
 that has wildly varying identifiers or literals, and others have lackluster
-support for the JS ecosystem: ES6, JSX, Flow, ignoring module declarations
+support for the JS ecosystem: ES6, ES2020, JSX, TSX, ignoring module declarations
 and imports, etc.
 
 And copy-pasted code is but one type of code duplication. Common boilerplate
@@ -35,10 +35,10 @@ on the AST node types, e.g. BlockStatement, VariableDeclaration,
 ObjectExpression, etc. By default, it searches nodes with matching identifiers
 and literals for copy-paste oriented detection, but this can be disabled.
 For context, identifiers include the names of variables, methods, properties,
-etc, while literals are strings, numbers, etc.
+etc., while literals are strings, numbers, etc.
 
 The tool accepts a list of paths to parse and prints any found matches. Any
-directories among the paths are walked recursively, and only `.js` and `.jsx`
+directories among the paths are walked recursively, and only `.js`, `.jsx`, `.ts` and `.tsx`
 files are analyzed. You can explicitly pass file paths that include a different
 extension as well. Any `node_modules` and `bower_components` dirs are also
 ignored.
