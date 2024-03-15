@@ -82,10 +82,10 @@ describe('Inspector', function() {
     var match = found[0];
     expect(found).to.have.length(1);
     expect(match.instances).to.have.length(2);
-    expect(match.instances[0].start).to.eql({line: 1, column: 0});
-    expect(match.instances[0].end).to.eql({line: 5, column: 1});
-    expect(match.instances[1].start).to.eql({line: 7, column: 0});
-    expect(match.instances[1].end).to.eql({line: 11, column: 1});
+    expect(match.instances[0].start).to.eql({line: 1, index: 0, column: 0});
+    expect(match.instances[0].end).to.eql({line: 5, index: 114, column: 1});
+    expect(match.instances[1].start).to.eql({line: 7, index: 116, column: 0});
+    expect(match.instances[1].end).to.eql({line: 11, index: 230, column: 1});
   });
 
   it('can find the largest match between two instances', function() {
@@ -99,10 +99,10 @@ describe('Inspector', function() {
     var match = found[0];
     expect(found).to.have.length(1);
     expect(match.instances).to.have.length(2);
-    expect(match.instances[0].start).to.eql({line: 1, column: 0});
-    expect(match.instances[0].end).to.eql({line: 9, column: 1});
-    expect(match.instances[1].start).to.eql({line: 11, column: 0});
-    expect(match.instances[1].end).to.eql({line: 19, column: 1});
+    expect(match.instances[0].start).to.eql({line: 1, index: 0, column: 0});
+    expect(match.instances[0].end).to.eql({line: 9, index: 186, column: 1});
+    expect(match.instances[1].start).to.eql({line: 11, index: 188, column: 0});
+    expect(match.instances[1].end).to.eql({line: 19, index: 374, column: 1});
   });
 
   it('supports ES6', function() {
@@ -116,10 +116,10 @@ describe('Inspector', function() {
     var match = found[0];
     expect(found).to.have.length(1);
     expect(match.instances).to.have.length(2);
-    expect(match.instances[0].start).to.eql({line: 2, column: 2});
-    expect(match.instances[0].end).to.eql({line: 6, column: 3});
-    expect(match.instances[1].start).to.eql({line: 8, column: 2});
-    expect(match.instances[1].end).to.eql({line: 12, column: 3});
+    expect(match.instances[0].start).to.eql({line: 2, index: 54, column: 2});
+    expect(match.instances[0].end).to.eql({line: 6, index: 167, column: 3});
+    expect(match.instances[1].start).to.eql({line: 8, index: 171, column: 2});
+    expect(match.instances[1].end).to.eql({line: 12, index: 284, column: 3});
   });
 
   it('supports JSX', function() {
@@ -133,10 +133,10 @@ describe('Inspector', function() {
     var match = found[0];
     expect(found).to.have.length(1);
     expect(match.instances).to.have.length(2);
-    expect(match.instances[0].start).to.eql({line: 3, column: 0});
-    expect(match.instances[0].end).to.eql({line: 9, column: 1});
-    expect(match.instances[1].start).to.eql({line: 11, column: 0});
-    expect(match.instances[1].end).to.eql({line: 17, column: 1});
+    expect(match.instances[0].start).to.eql({line: 3, index: 34, column: 0});
+    expect(match.instances[0].end).to.eql({line: 9, index: 165, column: 1});
+    expect(match.instances[1].start).to.eql({line: 11, index: 167, column: 0});
+    expect(match.instances[1].end).to.eql({line: 17, index: 299, column: 1});
   });
 
   it('supports Flow', function() {
@@ -150,10 +150,10 @@ describe('Inspector', function() {
     var match = found[0];
     expect(found).to.have.length(1);
     expect(match.instances).to.have.length(2);
-    expect(match.instances[0].start).to.eql({line: 1, column: 0});
-    expect(match.instances[0].end).to.eql({line: 5, column: 1});
-    expect(match.instances[1].start).to.eql({line: 7, column: 0});
-    expect(match.instances[1].end).to.eql({line: 11, column: 1});
+    expect(match.instances[0].start).to.eql({line: 1, index: 0, column: 0});
+    expect(match.instances[0].end).to.eql({line: 5, index: 150, column: 1});
+    expect(match.instances[1].start).to.eql({line: 7, index: 152, column: 0});
+    expect(match.instances[1].end).to.eql({line: 11, index: 302, column: 1});
   });
 
   it('includes the lines with the match', function() {
