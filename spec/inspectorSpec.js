@@ -139,8 +139,8 @@ describe('Inspector', function() {
     expect(match.instances[1].end).to.eql({line: 17, index: 299, column: 1});
   });
 
-  it('supports Flow', function() {
-    var inspector = new Inspector([fixtures.flowIntersection], {
+  it('supports TS', function() {
+    var inspector = new Inspector([fixtures.tsIntersection], {
       threshold: 20
     });
 
@@ -151,9 +151,9 @@ describe('Inspector', function() {
     expect(found).to.have.length(1);
     expect(match.instances).to.have.length(2);
     expect(match.instances[0].start).to.eql({line: 1, index: 0, column: 0});
-    expect(match.instances[0].end).to.eql({line: 5, index: 150, column: 1});
-    expect(match.instances[1].start).to.eql({line: 7, index: 152, column: 0});
-    expect(match.instances[1].end).to.eql({line: 11, index: 302, column: 1});
+    expect(match.instances[0].end).to.eql({line: 5, index: 143, column: 1});
+    expect(match.instances[1].start).to.eql({line: 7, index: 145, column: 0});
+    expect(match.instances[1].end).to.eql({line: 11, index: 288, column: 1});
   });
 
   it('includes the lines with the match', function() {

@@ -3,8 +3,7 @@
 ## Note this is a fork of jsinspect that now supports ES2020 standard, TS and TSX files. It uses Babel 7's parser, upgrading from babylon to the new babel/parser. Support for Flow has been removed in favour of TS.
 
 Detect copy-pasted and structurally similar JavaScript code. Requires Node.js
-6.0+, and supports ES6, JSX as well as Flow. Note: the project has been mostly
-rewritten for the 0.10 release and saw several breaking changes.
+6.0+, and supports ES2020, JSX, TS and TSX.
 
 [![Build Status](https://travis-ci.org/danielstjules/jsinspect.svg?branch=master)](https://travis-ci.org/danielstjules/jsinspect)
 
