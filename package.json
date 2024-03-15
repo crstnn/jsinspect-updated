@@ -12,11 +12,14 @@
     "paste"
   ],
   "author": "Daniel St. Jules <danielst.jules@gmail.com>",
+  "collaborators": [
+    { "name": "crstnn", "url": "https://github.com/crstnn" }
+  ],
   "license": "MIT",
-  "homepage": "https://github.com/danielstjules/jsinspect",
+  "homepage": "https://github.com/crstnn/jsinspect-update",
   "repository": {
     "type": "git",
-    "url": "https://github.com/danielstjules/jsinspect.git"
+    "url": "https://github.com/crstnn/jsinspect-update.git"
   },
   "dependencies": {
     "babylon": "6.16.1",
@@ -31,7 +34,7 @@
     "concat-stream": "^1.5.0",
     "dirmap": "^0.0.2",
     "expect.js": "^0.3.1",
-    "mocha": "^3.5.0"
+    "mocha": "^10.3.0"
   },
   "bin": {
     "jsinspect": "./bin/jsinspect"
