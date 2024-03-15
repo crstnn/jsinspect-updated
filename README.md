@@ -1,4 +1,6 @@
-![jsinspect](http://danielstjules.com/github/jsinspect-logo.png)
+# jsinspect
+
+## Note this is a fork of jsinspect which uses Babel's latest parser, upgrading from babylon to the new babel/parser. Now supports ES2020 standard.
 
 Detect copy-pasted and structurally similar JavaScript code. Requires Node.js
 6.0+, and supports ES6, JSX as well as Flow. Note: the project has been mostly
