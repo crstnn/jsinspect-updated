@@ -1,5 +1,5 @@
 {
-  "name": "jsinspect",
+  "name": "jsinspect-updated",
   "version": "0.13.0",
   "description": "Detect copy-pasted and structurally similar code (using the Babel 7's parser). Supports ES2020 standard.",
   "keywords": [
@@ -19,10 +19,10 @@
     }
   ],
   "license": "MIT",
-  "homepage": "https://github.com/crstnn/jsinspect-update",
+  "homepage": "https://github.com/crstnn/jsinspect-updated",
   "repository": {
     "type": "git",
-    "url": "https://github.com/crstnn/jsinspect-update.git"
+    "url": "git+https://github.com/crstnn/jsinspect-updated.git"
   },
   "dependencies": {
     "@babel/parser": "7.24.0",
@@ -40,9 +40,12 @@
     "mocha": "^10.3.0"
   },
   "bin": {
-    "jsinspect": "./bin/jsinspect"
+    "jsinspect": "bin/jsinspect"
   },
   "scripts": {
     "test": "mocha -R spec spec spec/reporters"
+  },
+  "bugs": {
+    "url": "https://github.com/crstnn/jsinspect-updated/issues"
   }
 }
