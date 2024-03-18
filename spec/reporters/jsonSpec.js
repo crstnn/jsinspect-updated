@@ -1,11 +1,9 @@
-var expect       = require('expect.js');
-var util         = require('util');
-var chalk        = require('chalk');
-var concat       = require('concat-stream')
-var fixtures     = require('../fixtures');
-var helpers      = require('../helpers');
-var JSONReporter = require('../../lib/reporters/json');
-var Inspector    = require('../../lib/inspector');
+const expect       = require('expect.js');
+const concat       = require('concat-stream')
+const fixtures     = require('../fixtures');
+const helpers      = require('../helpers');
+const JSONReporter = require('../../lib/reporters/json');
+const Inspector    = require('../../lib/inspector');
 
 describe('JSONReporter', function() {
   afterEach(function() {
@@ -14,17 +12,17 @@ describe('JSONReporter', function() {
 
   describe('constructor', function() {
     it('accepts an inspector as an argument', function() {
-      var inspector = new Inspector(['']);
-      var reporter = new JSONReporter(inspector);
+      const inspector = new Inspector(['']);
+      const reporter = new JSONReporter(inspector);
       expect(reporter._inspector).to.be(inspector);
     });
   });
 
   it('prints valid json', function() {
-    var inspector = new Inspector([fixtures.smallLines], {
+    const inspector = new Inspector([fixtures.smallLines], {
       threshold: 1
     });
-    var reporter = new JSONReporter(inspector);
+    const reporter = new JSONReporter(inspector);
 
     helpers.captureOutput();
     inspector.run();
@@ -39,11 +37,11 @@ describe('JSONReporter', function() {
     });
 
     it('prints the instances and their location', function() {
-      var inspector = new Inspector([fixtures.smallLines], {
+      const inspector = new Inspector([fixtures.smallLines], {
         threshold: 1
       });
-      var reporter = new JSONReporter(inspector);
-      var matches = helpers.collectMatches(inspector);
+      const reporter = new JSONReporter(inspector);
+      const matches = helpers.collectMatches(inspector);
 
       inspector.removeAllListeners('start');
       inspector.removeAllListeners('end');
@@ -51,7 +49,7 @@ describe('JSONReporter', function() {
       inspector.run();
       helpers.restoreOutput();
 
-      var parsedOutput = JSON.parse(helpers.getOutput());
+      const parsedOutput = JSON.parse(helpers.getOutput());
       expect(parsedOutput).to.eql({
         id: '8ee1b37f99571a8917be385c2924f659762c1349',
         instances: [
@@ -76,14 +74,14 @@ describe('JSONReporter', function() {
   });
 
   it('can write to a custom stream', function(done) {
-    var inspector = new Inspector([fixtures.smallLines], {
+    const inspector = new Inspector([fixtures.smallLines], {
       threshold: 1
     });
-    var concatStream = concat(onFinish);
-    var reporter = new JSONReporter(inspector, {
+    const concatStream = concat(onFinish);
+    const reporter = new JSONReporter(inspector, {
       writableStream: concatStream
     });
-    var matches = helpers.collectMatches(inspector);
+    const matches = helpers.collectMatches(inspector);
 
     inspector.run();
 

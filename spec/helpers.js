@@ -1,11 +1,11 @@
-var fs    = require('fs');
-var parse = require('../lib/parser').parse;
-var chalk = require('chalk');
+const fs    = require('fs');
+const parse = require('../lib/parser').parse;
+const chalk = require('chalk');
 
-var output = '';
-var enabled = chalk.enabled;
-var write = process.stdout.write;
-var parseCache = {};
+let output = '';
+const enabled = chalk.enabled;
+const write = process.stdout.write;
+const parseCache = {};
 
 module.exports = {
   trimlines: function(str) {
@@ -22,7 +22,7 @@ module.exports = {
   },
 
   collectMatches: function(inspector) {
-    var array = [];
+    const array = [];
     inspector.on('match', function(match) {
       array.push(match);
     });
@@ -42,8 +42,8 @@ module.exports = {
     if (parseCache[filePath]) return parseCache[filePath];
 
     // Skip the root Program node
-    var src = fs.readFileSync(filePath, {encoding: 'utf8'});
-    var ast = parse(src, filePath).body;
+    const src = fs.readFileSync(filePath, {encoding: 'utf8'});
+    const ast = parse(src, filePath).body;
     parseCache[filePath] = ast;
 
     return ast;

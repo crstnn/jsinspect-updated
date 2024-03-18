@@ -1,10 +1,8 @@
-var expect      = require('expect.js');
-var util        = require('util');
-var chalk       = require('chalk');
-var fixtures    = require('../fixtures');
-var helpers     = require('../helpers');
-var PMDReporter = require('../../lib/reporters/pmd');
-var Inspector   = require('../../lib/inspector');
+const expect      = require('expect.js');
+const fixtures    = require('../fixtures');
+const helpers     = require('../helpers');
+const PMDReporter = require('../../lib/reporters/pmd');
+const Inspector   = require('../../lib/inspector');
 
 describe('PMDReporter', function() {
   afterEach(function() {
@@ -13,10 +11,9 @@ describe('PMDReporter', function() {
 
   describe('constructor', function() {
     it('accepts an inspector as an argument', function() {
-      var inspector, reporter;
 
-      inspector = new Inspector(['']);
-      reporter = new PMDReporter(inspector);
+      const inspector = new Inspector(['']);
+      const reporter = new PMDReporter(inspector);
       expect(reporter._inspector).to.be(inspector);
     });
   });
@@ -27,11 +24,10 @@ describe('PMDReporter', function() {
     });
 
     it('prints paths and line numbers in a duplication element', function() {
-      var inspector, reporter, matches;
 
-      inspector = new Inspector([fixtures.smallLines], {threshold: 1});
-      reporter = new PMDReporter(inspector);
-      matches = helpers.collectMatches(inspector);
+      const inspector = new Inspector([fixtures.smallLines], {threshold: 1});
+      const reporter = new PMDReporter(inspector);
+      const matches = helpers.collectMatches(inspector);
 
       inspector.removeAllListeners('start');
       inspector.removeAllListeners('end');
@@ -39,7 +35,7 @@ describe('PMDReporter', function() {
       inspector.run();
       helpers.restoreOutput();
 
-      var expected = helpers.trimlines(
+      const expected = helpers.trimlines(
         `<duplication lines="3" id="${matches[0].hash}">
         <file path="${fixtures.smallLines}" line="1"/>
         <file path="${fixtures.smallLines}" line="2"/>

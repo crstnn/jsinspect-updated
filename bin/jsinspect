@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 
-var fs        = require('fs');
-var path      = require('path');
-var strip     = require('strip-json-comments');
-var chalk     = require('chalk');
-var filepaths = require('filepaths');
-var program   = require('commander');
-var Inspector = require('../lib/inspector');
-var reporters = require('../lib/reporters');
+const fs        = require('fs');
+const path      = require('path');
+const strip     = require('strip-json-comments');
+const chalk     = require('chalk');
+const filepaths = require('filepaths');
+const program   = require('commander');
+const Inspector = require('../lib/inspector');
+const reporters = require('../lib/reporters');
 
-var summary = `
+const summary = `
   Detect copy-pasted and structurally similar JavaScript code
   Example use: jsinspect -I -L -t 20 --ignore "test" ./path/to/src
 `;
@@ -35,9 +35,9 @@ program
   .parse(process.argv);
 
 // Check and parse the config file, if it exists
-var rcPath = path.resolve(process.cwd(), program.config);
-var opts = {encoding: 'utf8'};
-var rcContents, rc, paths;
+const rcPath = path.resolve(process.cwd(), program.config);
+const opts = {encoding: 'utf8'};
+let rcContents, rc, paths;
 
 if (fs.existsSync(rcPath) && fs.lstatSync(rcPath).isFile()) {
   try {
@@ -57,7 +57,7 @@ if (fs.existsSync(rcPath) && fs.lstatSync(rcPath).isFile()) {
 }
 
 // Assume all unconsumed arguments are paths
-var suppliedPaths = (program.args.length) ? program.args : ['.'];
+const suppliedPaths = (program.args.length) ? program.args : ['.'];
 
 // chalk doesn't support short flags by default
 if (!program.color) {
@@ -68,12 +68,12 @@ if (!program.color) {
 process.env.DEBUG = program.debug || '';
 
 // By default, ignore deps and tests
-var ignorePatterns = ['node_modules', 'bower_components', 'test', 'spec'];
+const ignorePatterns = ['node_modules', 'bower_components', 'test', 'spec'];
 if (program.ignore) {
   ignorePatterns.push(program.ignore);
 }
 
-var extensions = ['.js', '.jsx', '.ts', '.tsx'];
+const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 try {
   paths = filepaths.getSync(suppliedPaths, {
     ext: extensions,
@@ -89,7 +89,7 @@ if (!paths.length) {
   process.exit(0);
 }
 
-var inspector = new Inspector(paths, {
+const inspector = new Inspector(paths, {
   threshold:    program.threshold,
   identifiers:  program.identifiers,
   literals:     program.literals,
@@ -97,13 +97,13 @@ var inspector = new Inspector(paths, {
 });
 
 // Retrieve the requested reporter
-var reporterType = reporters[program.reporter] || reporters.default;
+const reporterType = reporters[program.reporter] || reporters.default;
 new reporterType(inspector, {
   truncate: program.truncate
 });
 
 // Track the number of matches
-var matches = 0;
+let matches = 0;
 inspector.on('match', () => matches++);
 
 try {

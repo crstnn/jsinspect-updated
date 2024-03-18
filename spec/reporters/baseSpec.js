@@ -1,10 +1,8 @@
-var expect       = require('expect.js');
-var util         = require('util');
-var chalk        = require('chalk');
-var fixtures     = require('../fixtures');
-var helpers      = require('../helpers');
-var BaseReporter = require('../../lib/reporters/base');
-var Inspector    = require('../../lib/inspector');
+const expect       = require('expect.js');
+const fixtures     = require('../fixtures');
+const helpers      = require('../helpers');
+const BaseReporter = require('../../lib/reporters/base');
+const Inspector    = require('../../lib/inspector');
 
 // A simple TestReporter for testing the BaseReporter
 class TestReporter extends BaseReporter {
@@ -17,7 +15,7 @@ class TestReporter extends BaseReporter {
 }
 
 describe('BaseReporter', function() {
-  var inspector, reporter;
+  let inspector, reporter;
 
   beforeEach(function() {
     helpers.captureOutput();
@@ -70,7 +68,7 @@ describe('BaseReporter', function() {
       inspector = new Inspector([fixtures.intersection], {
         threshold: 40
       });
-      var reporter = new TestReporter(inspector);
+      const reporter = new TestReporter(inspector);
 
       inspector.run();
       helpers.restoreOutput();

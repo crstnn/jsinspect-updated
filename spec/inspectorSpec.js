@@ -1,12 +1,12 @@
-var expect       = require('expect.js');
-var EventEmitter = require('events').EventEmitter;
-var Inspector    = require('../lib/inspector');
-var fixtures     = require('./fixtures');
+const expect       = require('expect.js');
+const EventEmitter = require('events').EventEmitter;
+const Inspector    = require('../lib/inspector');
+const fixtures     = require('./fixtures');
 
 describe('Inspector', function() {
   // Used to test emitted events
-  var found;
-  var listener = function(match) {
+  let found;
+  const listener = function(match) {
     found.push(match);
   };
 
@@ -20,27 +20,27 @@ describe('Inspector', function() {
     });
 
     it('accepts an array of file paths', function() {
-      var filePaths = ['path1.js', 'path2.js'];
-      var inspector = new Inspector(filePaths);
+      const filePaths = ['path1.js', 'path2.js'];
+      const inspector = new Inspector(filePaths);
       expect(inspector._filePaths).to.be(filePaths);
     });
 
     it('assigns a default threshold of 30', function() {
-      var inspector = new Inspector([]);
+      const inspector = new Inspector([]);
       expect(inspector._threshold).to.be(30);
     });
 
     it('accepts an options object', function() {
-      var opts = {threshold: 12};
-      var inspector = new Inspector([], opts);
+      const opts = {threshold: 12};
+      const inspector = new Inspector([], opts);
       expect(inspector._threshold).to.be(opts.threshold);
     });
   });
 
   describe('run', function() {
     it('emits a start event', function() {
-      var emitted;
-      var inspector = new Inspector([fixtures.intersection]);
+      let emitted;
+      const inspector = new Inspector([fixtures.intersection]);
       inspector.on('start', function() {
         emitted = true;
       });
@@ -50,8 +50,8 @@ describe('Inspector', function() {
     });
 
     it('emits an end event', function() {
-      var emitted;
-      var inspector = new Inspector([fixtures.intersection]);
+      let emitted;
+      const inspector = new Inspector([fixtures.intersection]);
       inspector.on('end', function() {
         emitted = true;
       });
@@ -61,7 +61,7 @@ describe('Inspector', function() {
     });
 
     it('emits the "match" event when a match is found', function() {
-      var inspector = new Inspector([fixtures.intersection], {
+      const inspector = new Inspector([fixtures.intersection], {
         threshold: 10
       });
 
@@ -72,14 +72,14 @@ describe('Inspector', function() {
   });
 
   it('can find an exact match between instances', function() {
-    var inspector = new Inspector([fixtures.intersection], {
+    const inspector = new Inspector([fixtures.intersection], {
       threshold: 15
     });
 
     inspector.on('match', listener);
     inspector.run();
 
-    var match = found[0];
+    const match = found[0];
     expect(found).to.have.length(1);
     expect(match.instances).to.have.length(2);
     expect(match.instances[0].start).to.eql({line: 1, index: 0, column: 0});
@@ -89,14 +89,14 @@ describe('Inspector', function() {
   });
 
   it('can find the largest match between two instances', function() {
-    var inspector = new Inspector([fixtures.redundantIntersection], {
+    const inspector = new Inspector([fixtures.redundantIntersection], {
       threshold: 11
     });
 
     inspector.on('match', listener);
     inspector.run();
 
-    var match = found[0];
+    const match = found[0];
     expect(found).to.have.length(1);
     expect(match.instances).to.have.length(2);
     expect(match.instances[0].start).to.eql({line: 1, index: 0, column: 0});
@@ -106,14 +106,14 @@ describe('Inspector', function() {
   });
 
   it('supports ES6', function() {
-    var inspector = new Inspector([fixtures.es6ClassExport], {
+    const inspector = new Inspector([fixtures.es6ClassExport], {
       threshold: 20
     });
 
     inspector.on('match', listener);
     inspector.run();
 
-    var match = found[0];
+    const match = found[0];
     expect(found).to.have.length(1);
     expect(match.instances).to.have.length(2);
     expect(match.instances[0].start).to.eql({line: 2, index: 54, column: 2});
@@ -123,14 +123,14 @@ describe('Inspector', function() {
   });
 
   it('supports JSX', function() {
-    var inspector = new Inspector([fixtures.jsxTodo], {
+    const inspector = new Inspector([fixtures.jsxTodo], {
       threshold: 20
     });
 
     inspector.on('match', listener);
     inspector.run();
 
-    var match = found[0];
+    const match = found[0];
     expect(found).to.have.length(1);
     expect(match.instances).to.have.length(2);
     expect(match.instances[0].start).to.eql({line: 3, index: 34, column: 0});
@@ -140,14 +140,14 @@ describe('Inspector', function() {
   });
 
   it('supports TS', function() {
-    var inspector = new Inspector([fixtures.tsIntersection], {
+    const inspector = new Inspector([fixtures.tsIntersection], {
       threshold: 20
     });
 
     inspector.on('match', listener);
     inspector.run();
 
-    var match = found[0];
+    const match = found[0];
     expect(found).to.have.length(1);
     expect(match.instances).to.have.length(2);
     expect(match.instances[0].start).to.eql({line: 1, index: 0, column: 0});
@@ -157,14 +157,14 @@ describe('Inspector', function() {
   });
 
   it('includes the lines with the match', function() {
-    var inspector = new Inspector([fixtures.intersection], {
+    const inspector = new Inspector([fixtures.intersection], {
       threshold: 11,
     });
 
     inspector.on('match', listener);
     inspector.run();
 
-    var match = found[0];
+    const match = found[0];
     expect(found).to.have.length(1);
     expect(match.instances).to.have.length(2);
     expect(match.instances[0].lines).to.be(
@@ -184,7 +184,7 @@ describe('Inspector', function() {
   });
 
   it('ignores matches with less than the supplied minimum', function() {
-    var inspector = new Inspector([fixtures.matches], {
+    const inspector = new Inspector([fixtures.matches], {
       threshold: 2,
       minInstances: 3
     });
@@ -196,7 +196,7 @@ describe('Inspector', function() {
   });
 
   it('ignores CommonJS require statements', function() {
-    var inspector = new Inspector([fixtures.commonjs], {
+    const inspector = new Inspector([fixtures.commonjs], {
       threshold: 3
     });
 
@@ -206,7 +206,7 @@ describe('Inspector', function() {
   });
 
   it('ignores AMD define expressions', function() {
-    var inspector = new Inspector([fixtures.amd], {
+    const inspector = new Inspector([fixtures.amd], {
       threshold: 5
     });
 

@@ -1,10 +1,8 @@
-var expect          = require('expect.js');
-var util            = require('util');
-var chalk           = require('chalk');
-var fixtures        = require('../fixtures');
-var helpers         = require('../helpers');
-var DefaultReporter = require('../../lib/reporters/default');
-var Inspector       = require('../../lib/inspector');
+const expect          = require('expect.js');
+const fixtures        = require('../fixtures');
+const helpers         = require('../helpers');
+const DefaultReporter = require('../../lib/reporters/default');
+const Inspector       = require('../../lib/inspector');
 
 describe('DefaultReporter', function() {
   afterEach(function() {
@@ -13,18 +11,18 @@ describe('DefaultReporter', function() {
 
   describe('constructor', function() {
     it('accepts an inspector as an argument', function() {
-      var inspector = new Inspector(['']);
-      var reporter = new DefaultReporter(inspector);
+      const inspector = new Inspector(['']);
+      const reporter = new DefaultReporter(inspector);
       expect(reporter._inspector).to.be(inspector);
     });
   });
 
   it('prints the summary on end', function() {
     helpers.captureOutput();
-    var inspector = new Inspector([fixtures.intersection], {
+    const inspector = new Inspector([fixtures.intersection], {
       threshold: 40
     });
-    var reporter = new DefaultReporter(inspector);
+    const reporter = new DefaultReporter(inspector);
 
     inspector.run();
     helpers.restoreOutput();
@@ -38,16 +36,16 @@ describe('DefaultReporter', function() {
     });
 
     it('prints the instances', function() {
-      var inspector = new Inspector([fixtures.intersection], {
+      const inspector = new Inspector([fixtures.intersection], {
         threshold: 15
       });
-      var reporter = new DefaultReporter(inspector);
+      const reporter = new DefaultReporter(inspector);
 
       inspector.removeAllListeners('end');
       inspector.run();
       helpers.restoreOutput();
 
-      var expected = `
+      const expected = `
 ------------------------------------------------------------
 
 Match - 2 instances
