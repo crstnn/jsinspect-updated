@@ -1,6 +1,6 @@
 {
   "name": "jsinspect-updated",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Detect copy-pasted and structurally similar code. Supports ES2020 standard, TS and TSX files. Using Babel 8's parser.",
   "keywords": [
     "inspect",
