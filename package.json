@@ -1,7 +1,7 @@
 {
-  "name": "jsinspect-updated",
+  "name": "jsinspect-plus",
   "version": "2.1.1",
-  "description": "Detect copy-pasted and structurally similar code. Supports ES2020 standard, TS and TSX files. Using Babel 8's parser.",
+  "description": "Detect copy-pasted and structurally similar code. Supports ES2020 standard (and most proposed features), TS and TSX files. Using Babel 8's parser.",
   "keywords": [
     "inspect",
     "detect",
@@ -11,7 +11,7 @@
     "copy",
     "paste"
   ],
-  "author": "Daniel St. Jules <danielst.jules@gmail.com>; crstnn",
+  "author": "crstnn; Daniel St. Jules;",
   "collaborators": [
     {
       "name": "crstnn",
@@ -19,10 +19,10 @@
     }
   ],
   "license": "MIT",
-  "homepage": "https://github.com/crstnn/jsinspect-updated",
+  "homepage": "https://github.com/crstnn/jsinspect-plus",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/crstnn/jsinspect-updated.git"
+    "url": "git+https://github.com/crstnn/jsinspect-plus.git"
   },
   "dependencies": {
     "@babel/parser": "^8.0.0-alpha.7",
@@ -46,6 +46,6 @@
     "test": "mocha -R spec spec spec/reporters"
   },
   "bugs": {
-    "url": "https://github.com/crstnn/jsinspect-updated/issues"
+    "url": "https://github.com/crstnn/jsinspect-plus/issues"
   }
 }
