@@ -21,7 +21,7 @@ use-case for a helpful CLI tool.
 
 Existing solutions do exist for this purpose, but some struggle with code
 that has wildly varying identifiers or literals, and others have lackluster
-support for the JS ecosystem: ES6, ES2020, JSX, TSX, ignoring module declarations
+support for the JS ecosystem: ES2020, JSX, TSX, ignoring module declarations
 and imports, etc.
 
 And copy-pasted code is but one type of code duplication. Common boilerplate
